@@ -7,17 +7,9 @@ public class ClientVO {
 	private String id;
 	private String pw;
 	private String name;
-	private boolean admin;
-	private int dayTodoCnt;
-	private int weekTodoCnt;
-	private int monthTodoCnt;
-	private int yearTodoCnt;
-	private int dayAchieve;
-	private int weekAchieve;
-	private int monthAchieve;
-	private int yearAchieve;
+	private int todoCnt;
+	private int achieveCnt;
 	
-	// get, set
 	public String getId() {
 		return id;
 	}
@@ -36,67 +28,24 @@ public class ClientVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public boolean isAdmin() {
-		return admin;
+	public int getTodoCnt() {
+		return todoCnt;
 	}
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
+	public void setTodoCnt(int todoCnt) {
+		this.todoCnt = todoCnt;
 	}
-	public int getDayTodoCnt() {
-		return dayTodoCnt;
+	public int getAchieveCnt() {
+		return achieveCnt;
 	}
-	public void setDayTodoCnt(int dayTodoCnt) {
-		this.dayTodoCnt = dayTodoCnt;
-	}
-	public int getWeekTodoCnt() {
-		return weekTodoCnt;
-	}
-	public void setWeekTodoCnt(int weekTodoCnt) {
-		this.weekTodoCnt = weekTodoCnt;
-	}
-	public int getMonthTodoCnt() {
-		return monthTodoCnt;
-	}
-	public void setMonthTodoCnt(int monthTodoCnt) {
-		this.monthTodoCnt = monthTodoCnt;
-	}
-	public int getYearTodoCnt() {
-		return yearTodoCnt;
-	}
-	public void setYearTodoCnt(int yearTodoCnt) {
-		this.yearTodoCnt = yearTodoCnt;
-	}
-	public int getDayAchieve() {
-		return dayAchieve;
-	}
-	public void setDayAchieve(int dayAchieve) {
-		this.dayAchieve = dayAchieve;
-	}
-	public int getWeekAchieve() {
-		return weekAchieve;
-	}
-	public void setWeekAchieve(int weekAchieve) {
-		this.weekAchieve = weekAchieve;
-	}
-	public int getMonthAchieve() {
-		return monthAchieve;
-	}
-	public void setMonthAchieve(int monthAchieve) {
-		this.monthAchieve = monthAchieve;
-	}
-	public int getYearAchieve() {
-		return yearAchieve;
-	}
-	public void setYearAchieve(int yearAchieve) {
-		this.yearAchieve = yearAchieve;
+	public void setAchieveCnt(int achieveCnt) {
+		this.achieveCnt = achieveCnt;
 	}
 	
-	// toString
 	@Override
 	public String toString() {
-		return "ClientVO [id=" + id + ", pw=" + pw + ", name=" + name + ", admin=" + admin + ", dayTodoCnt="
-				+ dayTodoCnt + ", weekTodoCnt=" + weekTodoCnt + ", monthTodoCnt=" + monthTodoCnt + ", yearTodoCnt="
-				+ yearTodoCnt + ", dayAchieve=" + dayAchieve + ", weekAchieve=" + weekAchieve + ", monthAchieve="
-				+ monthAchieve + ", yearAchieve=" + yearAchieve + "]";
+		return "ClientVO [id=" + id + ", pw=" + pw + ", name=" + name + ", todoCnt=" + todoCnt + ", achieveCnt="
+				+ achieveCnt + "]";
 	}
+	
+	
 }
