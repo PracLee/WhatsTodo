@@ -1,5 +1,8 @@
 package model.client;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class ClientVO {
 	private String id;
 	private String pw;

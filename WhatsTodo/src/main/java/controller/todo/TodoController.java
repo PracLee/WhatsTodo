@@ -14,23 +14,23 @@ import model.client.ClientVO;
 public class TodoController {
 	@RequestMapping("/insertTodo.do")
 	public String insertTodo(TodoVO vo, TodoDAO dao) {
-		return "main.do";
+		return "redirect:main.do";
 	}
 	@RequestMapping("/main.do")
 	public String mainAction(HttpServletRequest request, TodoVO vo, TodoDAO dao) {
 		HttpSession session = request.getSession();
 		ClientVO data = (ClientVO)session.getAttribute("clientInfo");
 		vo.setCid(data.getId());
-		return "main";
+		return "main.jsp";
 	}
 	@RequestMapping("/deleteTodo.do")
 	public String deleteTodo(TodoVO vo, TodoDAO dao) {
 		
-		return "main.do";
+		return "redirect:main.do";
 	}
 	@RequestMapping("/updateTodo.do")
 	public String updateTodo(TodoVO vo, TodoDAO dao) {
 		
-		return "main.do";
+		return "redirect:main.do";
 	}
 }

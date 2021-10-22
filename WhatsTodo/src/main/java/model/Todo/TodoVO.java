@@ -1,5 +1,8 @@
 package model.Todo;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class TodoVO {
 	private int todoNum;
 	private String todo;
