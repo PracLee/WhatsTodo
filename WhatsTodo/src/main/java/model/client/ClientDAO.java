@@ -27,7 +27,7 @@ public class ClientDAO {
 		Object[] args = {vo.getId(), vo.getPw(), vo.getName()};
 		jdbcTemplate.update(insertSQL, args);
 	}
-	
+
 	public ClientVO selectOne(ClientVO vo) {
 		return jdbcTemplate.queryForObject(selectOneSQL, new ClientRowMapper());
 	}
@@ -47,8 +47,7 @@ public class ClientDAO {
 class ClientRowMapper implements RowMapper<ClientVO>{
 
 	@Override
-	public ClientVO 
-	mapRow(ResultSet rs, int rowNum) throws SQLException {
+	public ClientVO mapRow(ResultSet rs, int rowNum) throws SQLException {
 		ClientVO data = new ClientVO();
 		data.setId(rs.getString("id"));
 		data.setPw(rs.getString("pw"));
@@ -57,5 +56,5 @@ class ClientRowMapper implements RowMapper<ClientVO>{
 		data.setAchieveCnt(rs.getInt("achieveCnt"));
 		return data;
 	}
-	
+
 }
