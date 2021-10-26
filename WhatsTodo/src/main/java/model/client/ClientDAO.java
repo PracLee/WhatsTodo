@@ -14,11 +14,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ClientDAO {
 	// CRUD
-	final String insertSQL = "insert into (id, pw, name) ClientData values(?,?,?)";
-	final String selectOneSQL = "select * from ClientData where id = ?, pw = ?";
-	final String selectAllSQL = "select * from ClientData";
-	final String updateSQL = "update ClientData set pw = ? name = ? where id = ?";
-	final String deleteSQL = "delete ClientData where id = ?";
+	final String insertSQL = "insert into (id, pw, name) Client values(?,?,?)";
+	final String selectOneSQL = "select * from Client where id = ? and pw = ?";
+	final String selectAllSQL = "select * from Client";
+	final String updateSQL = "update Client set pw = ? name = ? where id = ?";
+	final String deleteSQL = "delete Client where id = ?";
 
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -29,7 +29,8 @@ public class ClientDAO {
 	}
 
 	public ClientVO selectOne(ClientVO vo) {
-		return jdbcTemplate.queryForObject(selectOneSQL, new ClientRowMapper());
+		Object[] args = {vo.getId(), vo.getPw()};
+		return jdbcTemplate.queryForObject(selectOneSQL, args, new ClientRowMapper());
 	}
 
 	public List<ClientVO> selectAll(){

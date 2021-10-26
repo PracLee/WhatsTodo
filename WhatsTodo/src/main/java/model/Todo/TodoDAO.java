@@ -13,11 +13,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class TodoDAO {
 	// CRUD
-	final String insertSQL = "insert into (todoNum, todo, cid, deadLine) TodoData values((SELECT NVL(MAX(todoNum),0) + 1 FROM TodoData),0),?,?,?)";
-	final String selectOneSQL = "select * from TodoData where todoNum = ?";
-	final String selectAllSQL = "select * from TodoData";
-	final String updateSQL = "update TodoData set todo = ? deadLine = ? where todoNum = ?";
-	final String deleteSQL = "delete TodoData where todoNum = ?";
+	final String insertSQL = "insert into (todoNum, todo, cid, deadLine) Todo values((SELECT NVL(MAX(todoNum),0) + 1 FROM Todo),0),?,?,?)";
+	final String selectOneSQL = "select * from Todo where todoNum = ?";
+	final String selectAllSQL = "select * from Todo where cid = ?";
+	final String updateSQL = "update Todo set todo = ?, deadLine = ? where todoNum = ?";
+	final String deleteSQL = "delete Todo where todoNum = ?";
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -31,8 +31,8 @@ public class TodoDAO {
 		return jdbcTemplate.queryForObject(selectOneSQL, new TodoDataRowMapper());
 	}
 
-	public List<TodoVO> selectAll(){
-		return jdbcTemplate.query(selectAllSQL, new TodoDataRowMapper());
+	public List<TodoVO> selectAll(TodoVO vo){
+		return jdbcTemplate.query(selectAllSQL, new TodoDataRowMapper(), vo.getCid());
 	}
 	public void updateClient(TodoVO vo) {
 		Object[] args = {vo.getTodo(), vo.getDeadLine(), vo.getTodoNum()};

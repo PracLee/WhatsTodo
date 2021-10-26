@@ -1,50 +1,53 @@
 package controller.todo;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
-import model.Todo.TodoDAO;
+import model.Todo.TodoService;
 import model.Todo.TodoVO;
 import model.client.ClientVO;
 
 @Controller
+@SessionAttributes("data")
 public class TodoController {
-	@ModelAttribute("sm")
-	public Map<String,String> searchMap(){
-		Map<String,String> sm = new HashMap<String, String>();
-		sm.put("제목", "title");
-		sm.put("작성자", "writer");
-		return sm;
-	}
+	
+	@Autowired
+	private TodoService service;
 	
 	@RequestMapping("/insertTodo.do")
-	public String insertTodo(TodoVO vo, TodoDAO dao) {
+	public String insertTodo(TodoVO vo) {
 		return "redirect:main.do";
 	}
+	
 	@RequestMapping("/main.do")
-	public String mainAction(HttpServletRequest request, TodoVO vo, TodoDAO dao, Model model) {
-		HttpSession session = request.getSession();
-		ClientVO data = (ClientVO)session.getAttribute("clientInfo");
+	public String mainAction(HttpSession session, TodoVO vo, Model model) {
+		ClientVO data = (ClientVO)session.getAttribute("ClientData");
+		System.out.println("logindata : "+data);
 		vo.setCid(data.getId());
-		model.addAttribute("datas", data);
+		System.out.println("vodata : "+vo);
+		List<TodoVO>datas = service.getMyTodoList(vo);
+		if(datas.size()!=0) {
+			model.addAttribute("datas", datas);			
+		}
 		return "main.jsp";
 	}
+	
 	@RequestMapping("/deleteTodo.do")
-	public String deleteTodo(TodoVO vo, TodoDAO dao) {
-		
+	public String deleteTodo(TodoVO vo) {
+		service.deleteTodo(vo);
 		return "redirect:main.do";
 	}
+	
 	@RequestMapping("/updateTodo.do")
-	public String updateTodo(TodoVO vo, TodoDAO dao) {
-		
+	public String updateTodo(TodoVO vo) {
+		service.updateTodo(vo);
 		return "redirect:main.do";
 	}
 }

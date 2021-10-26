@@ -16,7 +16,7 @@ create table Todo(
 	CONSTRAINT fk_id foreign key (cid) references Client(id) on delete cascade
 );
 -- sample
-insert into CLIENT(id, pw, name) values('admin', '1234', '包府磊');
+insert into CLIENT(id, pw, name) values('admin@admin', '1234', '包府磊');
 insert into todo(todonum, todo, cid) values(0, '老窍磊', 'admin');
 
 
