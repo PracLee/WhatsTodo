@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class TodoDAO {
 	// CRUD
-	final String insertSQL = "insert into (todoNum, todo, cid, deadLine) Todo values((SELECT NVL(MAX(todoNum),0) + 1 FROM Todo),0),?,?,?)";
+	final String insertSQL = "insert into Todo (todoNum, todo, cid, deadLine) values ((SELECT NVL(MAX(todoNum),0) + 1 FROM Todo),?,?,?)";
 	final String selectOneSQL = "select * from Todo where todoNum = ?";
 	final String selectAllSQL = "select * from Todo where cid = ?";
 	final String updateSQL = "update Todo set todo = ?, deadLine = ? where todoNum = ?";
@@ -23,8 +23,8 @@ public class TodoDAO {
 	private JdbcTemplate jdbcTemplate;
 	
 	public void insertClient(TodoVO vo) {
-		Object[] args = {vo.getTodo(), vo.getCid(), vo.getDeadLine()};
-		jdbcTemplate.update(insertSQL, args);
+		System.out.println("insertClient vo = "+vo);
+		jdbcTemplate.update(insertSQL, vo.getTodo(), vo.getCid(), vo.getDeadLine());
 	}
 	
 	public TodoVO selectOne(TodoVO vo) {
@@ -53,7 +53,7 @@ class TodoDataRowMapper implements RowMapper<TodoVO>{
 		data.setCid(rs.getString("cid"));
 		data.setAchieveTodo(rs.getBoolean("achieveTodo"));
 		data.setToDate(rs.getDate("toDate"));
-		data.setDeadLine(rs.getDate("deadLine"));
+		data.setDeadLine(rs.getString("deadLine"));
 		return data;
 	}
 	

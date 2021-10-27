@@ -23,6 +23,7 @@ public class TodoController {
 	
 	@RequestMapping("/insertTodo.do")
 	public String insertTodo(TodoVO vo) {
+		service.insertTodo(vo);
 		return "redirect:main.do";
 	}
 	

@@ -12,12 +12,13 @@ create table Todo(
 	cid varchar(50) not null,
 	achieveTodo int default 0 constraint todo_achievetodo_CK check(achieveTodo = 0 or achieveTodo = 1),	
 	toDate date default sysdate,
-	deadLine date default sysdate,
+	deadLine date,
 	CONSTRAINT fk_id foreign key (cid) references Client(id) on delete cascade
 );
 -- sample
 insert into CLIENT(id, pw, name) values('admin@admin', '1234', '관리자');
-insert into todo(todonum, todo, cid) values(0, '일하자', 'admin');
+insert into todo(todonum, todo, cid) values(0, '일하자', 'admin@admin');
+insert into Todo (todoNum, todo, cid, deadLine) values ((SELECT NVL(MAX(todoNum),0) + 1 FROM Todo),'뭐지','admin@admin','2021-10-27 09:47:51.0');
 
 
 -- R

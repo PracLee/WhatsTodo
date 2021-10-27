@@ -11,7 +11,7 @@ public class TodoVO {
 	private String cid;
 	private boolean achieveTodo;
 	private Date toDate;
-	private Date deadLine;
+	private String deadLine;
 	
 	// get set
 	public int getTodoNum() {
@@ -44,10 +44,10 @@ public class TodoVO {
 	public void setToDate(Date toDate) {
 		this.toDate = toDate;
 	}
-	public Date getDeadLine() {
+	public String getDeadLine() {
 		return deadLine;
 	}
-	public void setDeadLine(Date deadLine) {
+	public void setDeadLine(String deadLine) {
 		this.deadLine = deadLine;
 	}
 	
