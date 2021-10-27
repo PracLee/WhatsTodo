@@ -20,6 +20,7 @@ insert into CLIENT(id, pw, name) values('admin@admin', '1234', '包府磊');
 insert into todo(todonum, todo, cid) values(0, '老窍磊', 'admin@admin');
 insert into Todo (todoNum, todo, cid, deadLine) values ((SELECT NVL(MAX(todoNum),0) + 1 FROM Todo),'构瘤','admin@admin','2021-10-27 09:47:51.0');
 
+delete from todo where todonum = 0;
 
 -- R
 select * from CLIENT;

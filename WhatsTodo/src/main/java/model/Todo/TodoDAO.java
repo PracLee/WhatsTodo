@@ -28,11 +28,11 @@ public class TodoDAO {
 	}
 	
 	public TodoVO selectOne(TodoVO vo) {
-		return jdbcTemplate.queryForObject(selectOneSQL, new TodoDataRowMapper());
+		return jdbcTemplate.queryForObject(selectOneSQL, new TodoRowMapper());
 	}
 
 	public List<TodoVO> selectAll(TodoVO vo){
-		return jdbcTemplate.query(selectAllSQL, new TodoDataRowMapper(), vo.getCid());
+		return jdbcTemplate.query(selectAllSQL, new TodoRowMapper(), vo.getCid());
 	}
 	public void updateClient(TodoVO vo) {
 		Object[] args = {vo.getTodo(), vo.getDeadLine(), vo.getTodoNum()};
@@ -43,7 +43,7 @@ public class TodoDAO {
 	}
 }
 
-class TodoDataRowMapper implements RowMapper<TodoVO>{
+class TodoRowMapper implements RowMapper<TodoVO>{
 
 	@Override
 	public TodoVO mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -54,6 +54,7 @@ class TodoDataRowMapper implements RowMapper<TodoVO>{
 		data.setAchieveTodo(rs.getBoolean("achieveTodo"));
 		data.setToDate(rs.getDate("toDate"));
 		data.setDeadLine(rs.getString("deadLine"));
+		System.out.println("TodoRowMapper data : " + data);
 		return data;
 	}
 	

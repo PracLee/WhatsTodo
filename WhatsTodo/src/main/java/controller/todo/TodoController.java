@@ -30,12 +30,17 @@ public class TodoController {
 	@RequestMapping("/main.do")
 	public String mainAction(HttpSession session, TodoVO vo, Model model) {
 		ClientVO data = (ClientVO)session.getAttribute("ClientData");
-		System.out.println("logindata : "+data);
 		vo.setCid(data.getId());
-		System.out.println("vodata : "+vo);
 		List<TodoVO>datas = service.getMyTodoList(vo);
 		if(datas.size()!=0) {
-			model.addAttribute("datas", datas);			
+			for(int i =0; i<datas.size();i++) {
+				String deadLine = datas.get(i).getDeadLine();
+				System.out.println("Origin deadLine : "+deadLine);
+				String sliceDate = deadLine.substring(0,deadLine.lastIndexOf(" "));
+				System.out.println("ÀÚ¸¥ sliceDate : "+sliceDate);
+				datas.get(i).setDeadLine(sliceDate);
+			}
+			model.addAttribute("TodoDatas", datas);			
 		}
 		return "main.jsp";
 	}

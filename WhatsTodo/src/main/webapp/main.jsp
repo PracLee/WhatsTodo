@@ -20,12 +20,20 @@
 	href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
 <link rel="stylesheet" type="text/css" href="css/demo.css" />
 <link rel="stylesheet" type="text/css" href="css/set2.css" />
+<!-- notinputTemplate -->
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+	type="text/css">
+<link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+	rel="stylesheet">
+<link href="css/sb-admin-2.min.css" rel="stylesheet">
 <!--[if IE]>
   		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 </head>
 <body>
 	<div class="container">
+		<mytag:topbar />
 		<form method="post" action="insertTodo.do">
 			<section class="content bgcolor-1">
 				<span class="input input--nariko"> <input
@@ -43,9 +51,30 @@
 				</label>
 				</span> <input class="devideword" type="submit" value="할꺼야!">
 			</section>
-			<input type ="hidden" name="cid" value="${ClientData.id}">
+			<input type="hidden" name="cid" value="${ClientData.id}">
 		</form>
-		<mytag:datas TodoList="${datas}"/>
+
+		<!-- 목록 출력 -->
+		<div class="todoList">
+			<table>
+				<tr>
+					<th>언제까지 해야할까?</th>
+					<th>뭘해야할까?</th>
+					<th>수정</th>
+					<th>삭제</th>
+					<th>달성</th>
+				</tr>
+				<c:forEach var="tl" items="${TodoDatas }">
+					<tr>
+						<td>${tl.deadLine}</td>
+						<td>${tl.todo }</td>
+						<td><a href="#">❗</a></td>
+						<td><a href="deleteTodo.do?todoNum=${tl.todoNum}">❌</a></td>
+						<td><a href="achieveTodo.do?todoNum=${tl.todoNum}">⭕</a></td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
 	</div>
 	<!-- /container -->
 	<script src="js/classie.js"></script>
@@ -81,5 +110,21 @@
 			}
 		})();
 	</script>
+	<!-- Bootstrap core JavaScript-->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="js/sb-admin-2.min.js"></script>
+
+	<!-- Page level plugins -->
+	<script src="vendor/chart.js/Chart.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="js/demo/chart-area-demo.js"></script>
+	<script src="js/demo/chart-pie-demo.js"></script>
 </body>
 </html>
