@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="mytag" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
@@ -49,7 +50,7 @@
 					for="input-22"> <span
 						class="input__label-content input__label-content--nariko">Todo</span>
 				</label>
-				</span> <input class="devideword" type="submit" value="할꺼야!">
+				</span> <input class="devideword" type="submit" value="<spring:message code="message.main.doit" />">
 			</section>
 			<input type="hidden" name="cid" value="${ClientData.id}">
 		</form>
@@ -58,11 +59,11 @@
 		<div class="todoList">
 			<table>
 				<tr>
-					<th>언제까지 해야할까?</th>
-					<th>뭘해야할까?</th>
-					<th>수정</th>
-					<th>삭제</th>
-					<th>달성</th>
+					<th><spring:message code="message.main.deadLine" /></th>
+					<th><spring:message code="message.main.todo" /></th>
+					<th><spring:message code="message.main.update" /></th>
+					<th><spring:message code="message.main.delete" /></th>
+					<th><spring:message code="message.main.achieve" /></th>
 				</tr>
 				<c:forEach var="tl" items="${TodoDatas }">
 					<tr>
