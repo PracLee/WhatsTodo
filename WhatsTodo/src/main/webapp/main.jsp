@@ -43,7 +43,7 @@
 					class="input__label input__label--nariko" for="input-21"> <span
 						class="input__label-content input__label-content--nariko">DeadLine</span>
 				</label>
-				</span> <span class="devideword">까지</span> <span
+				</span> <span class="devideword"><spring:message code="message.main.to"/></span> <span
 					class="input input--nariko"> <input
 					class="input__field input__field--nariko" type="text" id="input-22"
 					name="todo" /> <label class="input__label input__label--nariko"
@@ -56,8 +56,8 @@
 		</form>
 
 		<!-- 목록 출력 -->
-		<div class="todoList">
-			<table>
+		<div class="col-sm-12">
+			<table class="table table-bordered dataTable">
 				<tr>
 					<th><spring:message code="message.main.deadLine" /></th>
 					<th><spring:message code="message.main.todo" /></th>

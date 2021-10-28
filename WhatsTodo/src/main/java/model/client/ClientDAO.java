@@ -14,10 +14,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ClientDAO {
 	// CRUD
-	final String insertSQL = "insert into (id, pw, name) Client values(?,?,?)";
+	final String insertSQL = "insert into Client (id, pw, name) values(?,?,?)";
 	final String selectOneSQL = "select * from Client where id = ? and pw = ?";
 	final String selectAllSQL = "select * from Client";
-	final String updateSQL = "update Client set pw = ? name = ? where id = ?";
+	final String updateSQL = "update Client set pw = ?, name = ? where id = ?";
 	final String deleteSQL = "delete Client where id = ?";
 
 	@Autowired

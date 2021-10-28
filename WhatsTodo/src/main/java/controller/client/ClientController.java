@@ -25,7 +25,7 @@ public class ClientController {
 	public String login(ClientVO vo, HttpServletRequest request) {
 		ClientVO data = service.getOneClient(vo);
 		if(data==null) {
-			return "index";
+			return "index.jsp";
 		}
 		HttpSession session = request.getSession();
 		session.setAttribute("ClientData", data);
@@ -42,13 +42,20 @@ public class ClientController {
 	
 	@RequestMapping("/updateClient.do")
 	public String updateClient(ClientVO vo){
+		System.out.println("updateClientVO : "+vo);
 		service.updateClient(vo);
-		return "main.do";
+		return "login.do";
 	}
 	
 	@RequestMapping("/deleteClient.do")
 	public String deleteClient(ClientVO vo) {
 		service.deleteClient(vo);
-		return "index";
+		return "index.jsp";
+	}
+	
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "index.jsp";
 	}
 }

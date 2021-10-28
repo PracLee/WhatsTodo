@@ -238,7 +238,7 @@ button:focus:not(:focus-visible) {
   outline: 0;
 }
 
-input,
+
 button,
 select,
 optgroup,
@@ -249,8 +249,7 @@ textarea {
   line-height: inherit;
 }
 
-button,
-input {
+button {
   overflow: visible;
 }
 
@@ -1895,14 +1894,6 @@ pre code {
   opacity: 1;
 }
 
-input[type="date"].form-control,
-input[type="time"].form-control,
-input[type="datetime-local"].form-control,
-input[type="month"].form-control {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
 
 select.form-control:focus::-ms-value {
   color: #6e707e;
