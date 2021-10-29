@@ -11,7 +11,10 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
+<!-- 구글 로그인 OAuth2.0 클라이언트ID -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id"
+	content="1510049929-7vep3930s4noba6qc01vu4ov2ob6sarl.apps.googleusercontent.com">
 <title>What's Todo? Login</title>
 
 <!-- Custom fonts for this template-->
@@ -63,14 +66,17 @@
 													Me</label>
 											</div>
 										</div>
-										<input class="btn btn-primary btn-user btn-block" type="submit" value="Login">
+										<input class="btn btn-primary btn-user btn-block"
+											type="submit" value="Login">
 										<hr>
-										<a href="index.html" class="btn btn-google btn-user btn-block">
-											<i class="fab fa-google fa-fw"></i> Login with Google
-										</a> <a href="index.html"
-											class="btn btn-facebook btn-user btn-block"> <i
-											class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+										<a href="javascript:void(0)"
+											class="btn btn-google btn-user btn-block"> <i
+											class="fab fa-google fa-fw" data-onsuccess="onSignIn"></i> Login with Google
 										</a>
+										<!-- FB login button  https 인증서 설치 후 사용가능
+										<div class="fb-login-button" data-width="" data-size="large"
+											data-button-type="login_with" data-layout="rounded"
+											data-auto-logout-link="false" data-use-continue-as="true"></div> -->
 									</form>
 									<hr>
 									<div class="text-center">
@@ -91,7 +97,7 @@
 		</div>
 
 	</div>
-
+	<div></div>
 	<!-- Bootstrap core JavaScript-->
 	<script src="vendor/jquery/jquery.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -101,7 +107,14 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin-2.min.js"></script>
-
+	<!-- FB login	https 인증서 설치 후 사용가능
+	<div id="fb-root"></div>
+	<script async defer crossorigin="anonymous"
+		src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v12.0&appId=184877730496183&autoLogAppEvents=1"
+		nonce="ZzTJHbtm"></script>
+		 -->
+	<!-- 처음 실행하는 함수 -->
+	
 </body>
 
 </html>

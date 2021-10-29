@@ -63,4 +63,9 @@ public class ClientController {
 		session.invalidate();
 		return "index.jsp";
 	}
+	@RequestMapping("googleRegister.do")
+	public String googleRegister() {
+		
+		return "main.do";
+	}
 }

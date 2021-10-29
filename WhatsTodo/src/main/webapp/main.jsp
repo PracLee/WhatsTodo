@@ -38,14 +38,14 @@
 		<form method="post" action="insertTodo.do">
 			<section class="content bgcolor-1">
 				<span class="input input--nariko"> <input
-					class="input__field input__field--nariko" type="date" id="input-21"
-					name="deadLine" /> <label
+					class="input__field input__field--nariko" type="date" id="input-21" min="${today}"
+					name="deadLine" required="required" /> <label
 					class="input__label input__label--nariko" for="input-21"> <span
 						class="input__label-content input__label-content--nariko">DeadLine</span>
 				</label>
 				</span> <span class="devideword"><spring:message code="message.main.to"/></span> <span
 					class="input input--nariko"> <input
-					class="input__field input__field--nariko" type="text" id="input-22"
+					class="input__field input__field--nariko" type="text" id="input-22" required="required"
 					name="todo" /> <label class="input__label input__label--nariko"
 					for="input-22"> <span
 						class="input__label-content input__label-content--nariko">Todo</span>

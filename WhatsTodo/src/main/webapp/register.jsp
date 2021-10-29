@@ -63,16 +63,13 @@
 								</div>
 								<input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account">
 								<hr>
-								<a href="index.html" class="btn btn-google btn-user btn-block">
+								<a href="googleRegister.do" class="btn btn-google btn-user btn-block">
 									<i class="fab fa-google fa-fw"></i> Register with Google
-								</a> <a href="index.html"
-									class="btn btn-facebook btn-user btn-block"> <i
-									class="fab fa-facebook-f fa-fw"></i> Register with Facebook
 								</a>
 							</form>
 							<hr>
 							<div class="text-center">
-								<a class="small" href="login.html">Already have an account?
+								<a class="small" href="login.jsp">Already have an account?
 									Login!</a>
 							</div>
 						</div>

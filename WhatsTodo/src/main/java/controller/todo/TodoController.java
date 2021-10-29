@@ -2,6 +2,8 @@ package controller.todo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -32,6 +34,11 @@ public class TodoController {
 	
 	@RequestMapping("/main.do")
 	public String mainAction(HttpSession session, TodoVO vo, Model model) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar c1 = Calendar.getInstance();
+        String strToday = sdf.format(c1.getTime());
+        System.out.println("today : "+strToday);
+        model.addAttribute("today", strToday);
 		ClientVO data = (ClientVO)session.getAttribute("ClientData");
 		vo.setCid(data.getId());
 		List<TodoVO>datas = service.getMyTodoList(vo);
