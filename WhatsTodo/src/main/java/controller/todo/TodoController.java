@@ -49,9 +49,17 @@ public class TodoController {
 	}
 	
 	@RequestMapping("/deleteTodo.do")
-	public String deleteTodo(TodoVO vo) {
+	public void deleteTodo(TodoVO vo, HttpServletResponse response) {
+		System.out.println("여긴 오니?");
 		service.deleteTodo(vo);
-		return "redirect:main.do";
+		try {
+			PrintWriter out =response.getWriter();
+			out.print(true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return;
 	}
 	
 	@RequestMapping("/updateTodo.do")

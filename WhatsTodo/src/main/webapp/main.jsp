@@ -66,7 +66,7 @@
 					<th><spring:message code="message.main.achieve" /></th>
 				</tr>
 				<c:forEach var="tl" items="${TodoDatas}">
-					<tr>
+					<tr id="todoSet_${tl.todoNum}">
 						<td>${tl.deadLine}</td>
 						<td><span id="text_${tl.todoNum}">${tl.todo}</span><input type="text" id="input_${tl.todoNum}" class="noShow"></td>
 						<td>
@@ -75,7 +75,7 @@
 						<!-- updateDB button -->
 						<a href="javascript:void(0);" onclick="todoEditDB(${tl.todoNum})" id="updateButton_${tl.todoNum}" class="noShow">❗</a>
 						</td>
-						<td><a href="deleteTodo.do?todoNum=${tl.todoNum}">❌</a></td>
+						<td><a href="javascript:void(0);" onclick="deleteTodoDB(${tl.todoNum})">❌</a></td>
 						<td><a href="achieveTodo.do?todoNum=${tl.todoNum}">⭕</a></td>
 					</tr>
 				</c:forEach>
