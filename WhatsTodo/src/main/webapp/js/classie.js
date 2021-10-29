@@ -78,3 +78,39 @@ if ( typeof define === 'function' && define.amd ) {
 }
 
 })( window );
+
+// Custom JS
+function showInput(index){
+	$("#input_"+index).removeClass();
+	$("#updateButton_"+index).removeClass();
+	$("#text_"+index).css('display','none');
+	$("#text_"+index).css('visibility','hidden');
+	$("#showInputButton_"+index).css('display','none');
+	$("#showInputButton_"+index).css('visibility','hidden');
+}
+
+function todoEditDB(index){ 
+	var msg = $("#input_"+index).val().replaceAll("??", "⁇").replaceAll("&","＆").replaceAll("%","％")
+	.replaceAll("+","＋").replaceAll("\\", "￦");
+	var params = "todo="+$("#input_"+index).val()+"&todoNum="+index;
+
+	$.ajax({
+		type:"post",
+		url:"updateTodo.do",
+		data:params,
+		dataType:"json",
+		success:function(args){
+			// console.log("성공했으면 소리질러!!");
+			$('#text_'+index).css('display','');
+			$('#text_'+index).css('visibility','');
+			$('#showInputButton_'+index).css('display','');
+			$('#showInputButton_'+index).css('visibility','');
+			$('#input_'+index).css('display','none');
+			$('#input_'+index).css('visibility','hidden');
+			$('#updateButton_'+index).css('display','none');
+			$('#updateButton_'+index).css('visibility','hidden');
+
+			$("#text_"+index).text(args);
+		}
+	})
+}

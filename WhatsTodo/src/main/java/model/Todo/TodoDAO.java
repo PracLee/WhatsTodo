@@ -15,8 +15,8 @@ public class TodoDAO {
 	// CRUD
 	final String insertSQL = "insert into Todo (todoNum, todo, cid, deadLine) values ((SELECT NVL(MAX(todoNum),0) + 1 FROM Todo),?,?,?)";
 	final String selectOneSQL = "select * from Todo where todoNum = ?";
-	final String selectAllSQL = "select * from Todo where cid = ?";
-	final String updateSQL = "update Todo set todo = ?, deadLine = ? where todoNum = ?";
+	final String selectAllSQL = "select * from Todo where cid = ? order by deadline";
+	final String updateSQL = "update Todo set todo = ? where todoNum = ?";
 	final String deleteSQL = "delete Todo where todoNum = ?";
 	
 	@Autowired
@@ -35,7 +35,7 @@ public class TodoDAO {
 		return jdbcTemplate.query(selectAllSQL, new TodoRowMapper(), vo.getCid());
 	}
 	public void updateClient(TodoVO vo) {
-		Object[] args = {vo.getTodo(), vo.getDeadLine(), vo.getTodoNum()};
+		Object[] args = {vo.getTodo(), vo.getTodoNum()};
 		jdbcTemplate.update(updateSQL, args);
 	}
 	public void deleteClient(TodoVO vo) {

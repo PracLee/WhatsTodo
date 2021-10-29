@@ -6,11 +6,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import model.client.ClientService;
 import model.client.ClientVO;
 
 @Controller
+@SessionAttributes("data")
 public class ClientController {
 	
 	@Autowired
@@ -23,6 +25,9 @@ public class ClientController {
 	
 	@RequestMapping("/login.do")
 	public String login(ClientVO vo, HttpServletRequest request) {
+		if(vo.getId().equals("") || vo.getPw()==null) {
+			return "index.jsp";
+		}
 		ClientVO data = service.getOneClient(vo);
 		if(data==null) {
 			return "index.jsp";

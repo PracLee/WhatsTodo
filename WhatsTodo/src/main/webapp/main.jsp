@@ -65,11 +65,16 @@
 					<th><spring:message code="message.main.delete" /></th>
 					<th><spring:message code="message.main.achieve" /></th>
 				</tr>
-				<c:forEach var="tl" items="${TodoDatas }">
+				<c:forEach var="tl" items="${TodoDatas}">
 					<tr>
 						<td>${tl.deadLine}</td>
-						<td>${tl.todo }</td>
-						<td><a href="#">❗</a></td>
+						<td><span id="text_${tl.todoNum}">${tl.todo}</span><input type="text" id="input_${tl.todoNum}" class="noShow"></td>
+						<td>
+						<!-- show input button -->
+						<a href="javascript:void(0);" onclick="showInput(${tl.todoNum})" id="showInputButton_${tl.todoNum}">❗</a>
+						<!-- updateDB button -->
+						<a href="javascript:void(0);" onclick="todoEditDB(${tl.todoNum})" id="updateButton_${tl.todoNum}" class="noShow">❗</a>
+						</td>
 						<td><a href="deleteTodo.do?todoNum=${tl.todoNum}">❌</a></td>
 						<td><a href="achieveTodo.do?todoNum=${tl.todoNum}">⭕</a></td>
 					</tr>

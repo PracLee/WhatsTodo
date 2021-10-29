@@ -1,7 +1,10 @@
 package controller.todo;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,8 +55,17 @@ public class TodoController {
 	}
 	
 	@RequestMapping("/updateTodo.do")
-	public String updateTodo(TodoVO vo) {
+	public void updateTodo(TodoVO vo, HttpServletResponse response) {
+		System.out.println("updateTodoVO = " + vo);
 		service.updateTodo(vo);
-		return "redirect:main.do";
+		String data = vo.getTodo();
+		try {
+			PrintWriter out =response.getWriter();
+			out.print(data);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return;
 	}
 }
