@@ -8,4 +8,5 @@ public interface TodoService {
 	public TodoVO getOneTodo(TodoVO vo);
 	public void updateTodo(TodoVO vo);
 	public void deleteTodo(TodoVO vo);
+	public void updateAchieve(TodoVO vo);
 }

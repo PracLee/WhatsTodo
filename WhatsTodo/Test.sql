@@ -21,7 +21,7 @@ insert into todo(todonum, todo, cid) values(0, '일하자', 'admin@admin');
 insert into Todo (todoNum, todo, cid, deadLine) values ((SELECT NVL(MAX(todoNum),0) + 1 FROM Todo),'뭐지','admin@admin','2021-10-27 09:47:51.0');
 
 delete from todo where todonum = 0;
-
+select * from Todo where cid = 'spsbsc@naver.com' and achieveTodo = 1 order by deadline;
 -- R
 select * from CLIENT;
 select * from Todo;

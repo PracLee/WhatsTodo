@@ -15,13 +15,16 @@ public class TodoDAO {
 	// CRUD
 	final String insertSQL = "insert into Todo (todoNum, todo, cid, deadLine) values ((SELECT NVL(MAX(todoNum),0) + 1 FROM Todo),?,?,?)";
 	final String selectOneSQL = "select * from Todo where todoNum = ?";
-	final String selectAllSQL = "select * from Todo where cid = ? order by deadline";
+	final String selectAllSQL = "select * from Todo where cid = ? and achieveTodo = 0 order by deadline";
 	final String updateSQL = "update Todo set todo = ? where todoNum = ?";
 	final String deleteSQL = "delete Todo where todoNum = ?";
 	
+	// 추가기능
+	final String updateAchieve = "update Todo set achieveTodo = 1 where todoNum = ?";
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
+	// 비즈니스 메소드
 	public void insertClient(TodoVO vo) {
 		System.out.println("insertClient vo = "+vo);
 		jdbcTemplate.update(insertSQL, vo.getTodo(), vo.getCid(), vo.getDeadLine());
@@ -40,6 +43,11 @@ public class TodoDAO {
 	}
 	public void deleteClient(TodoVO vo) {
 		jdbcTemplate.update(deleteSQL, vo.getTodoNum());
+	}
+	
+	// 추가 기능
+	public void achieveTodo(TodoVO vo) {
+		jdbcTemplate.update(updateAchieve, vo.getTodoNum());
 	}
 }
 

@@ -68,15 +68,17 @@
 				<c:forEach var="tl" items="${TodoDatas}">
 					<tr id="todoSet_${tl.todoNum}">
 						<td>${tl.deadLine}</td>
-						<td><span id="text_${tl.todoNum}">${tl.todo}</span><input type="text" id="input_${tl.todoNum}" class="noShow"></td>
+						<td><span id="text_${tl.todoNum}">${tl.todo}</span><input type="text" id="input_${tl.todoNum}" class="noShow">
+						<a href="javascript:void(0);" onclick="editCancle(${tl.todoNum})" id="cancleButton_${tl.todoNum}" class="noShow">❌</a>
+						</td>
 						<td>
 						<!-- show input button -->
 						<a href="javascript:void(0);" onclick="showInput(${tl.todoNum})" id="showInputButton_${tl.todoNum}">❗</a>
 						<!-- updateDB button -->
 						<a href="javascript:void(0);" onclick="todoEditDB(${tl.todoNum})" id="updateButton_${tl.todoNum}" class="noShow">❗</a>
 						</td>
-						<td><a href="javascript:void(0);" onclick="deleteTodoDB(${tl.todoNum})">❌</a></td>
-						<td><a href="achieveTodo.do?todoNum=${tl.todoNum}">⭕</a></td>
+						<td><a href="javascript:void(0);" onclick="deleteTodoDB(${tl.todoNum})" id="deleteTodoButton_${tl.todoNum}">❌</a></td>
+						<td><a href="javascript:void(0);" onclick="todoAchieve(${tl.todoNum})" id="achieveTodoButton_${tl.todoNum}">⭕</a></td>
 					</tr>
 				</c:forEach>
 			</table>

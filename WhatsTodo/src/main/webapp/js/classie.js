@@ -83,10 +83,17 @@
 function showInput(index){
 	$("#input_"+index).removeClass();
 	$("#updateButton_"+index).removeClass();
-	$("#text_"+index).css('display','none');
-	$("#text_"+index).css('visibility','hidden');
-	$("#showInputButton_"+index).css('display','none');
-	$("#showInputButton_"+index).css('visibility','hidden');
+	$("#cancleButton_"+index).removeClass();
+	$("#text_"+index).addClass('noShow');
+	$("#showInputButton_"+index).addClass('noShow');
+}
+
+function editCancle(index){
+	$("#input_"+index).addClass('noShow');
+	$("#updateButton_"+index).addClass('noShow');
+	$("#cancleButton_"+index).addClass('noShow');
+	$("#text_"+index).removeClass();
+	$("#showInputButton_"+index).removeClass();
 }
 
 function todoEditDB(index){ 
@@ -101,14 +108,11 @@ function todoEditDB(index){
 		dataType:"json",
 		success:function(args){
 			// console.log("성공했으면 소리질러!!");
-			$('#text_'+index).css('display','');
-			$('#text_'+index).css('visibility','');
-			$('#showInputButton_'+index).css('display','');
-			$('#showInputButton_'+index).css('visibility','');
-			$('#input_'+index).css('display','none');
-			$('#input_'+index).css('visibility','hidden');
-			$('#updateButton_'+index).css('display','none');
-			$('#updateButton_'+index).css('visibility','hidden');
+			$('#text_'+index).removeClass();
+			$('#showInputButton_'+index).removeClass();
+			$('#cancleButton_'+index).addClass('noShow');
+			$('#input_'+index).addClass('noShow');
+			$('#updateButton_'+index).addClass('noShow');
 
 			$("#text_"+index).text(args);
 		}
@@ -116,7 +120,6 @@ function todoEditDB(index){
 }
 
 function deleteTodoDB(index){ 
-
 	var params = "todoNum="+index;
 	$.ajax({
 		type:"post",
@@ -124,11 +127,32 @@ function deleteTodoDB(index){
 		data:params,
 		dataType:"json",
 		success:function(data){
-			console.log(" : todoSet이 뭔데!");
-			
 			var todoSet = document.querySelector("#todoSet_"+index);
 			todoSet.remove();
 		}
 	})
 
 }
+
+function todoAchieve(index){ 
+	var params = "todoNum="+index;
+	$.ajax({
+		type:"post",
+		url:"achieveTodo.do",
+		data:params,
+		dataType:"json",
+		success:function(args){
+			$("#todoSet_"+index).css("text-decoration","line-through");
+			$("#todoSet_"+index).css("color","#D4D1CE");
+			$("#todoSet_"+index).css("background-color","#F0EFEE");			
+
+			$("#input_"+index).addClass("noShow");
+			$("#cancleButton_"+index).addClass("noShow");
+			$("#showInputButton_"+index).addClass("noShow");
+			$("#deleteTodoButton_"+index).addClass("noShow");
+			$("#updateButton_"+index).addClass("noShow");
+			$("#achieveTodoButton_"+index).addClass("noShow");
+		}
+	})
+}
+

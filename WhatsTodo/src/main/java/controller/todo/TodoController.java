@@ -83,4 +83,17 @@ public class TodoController {
 		}
 		return;
 	}
+	
+	@RequestMapping("/achieveTodo.do")
+	public void achieveTodo(TodoVO vo, HttpServletResponse response) {
+		service.updateAchieve(vo);
+		try {
+			PrintWriter out = response.getWriter();
+			out.print(true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return;
+	}
 }

@@ -10,7 +10,7 @@ public class TodoServiceImpl implements TodoService{
 	
 	@Autowired
 	TodoDAO dao;
-
+	// 비즈니스 메소드
 	@Override
 	public void insertTodo(TodoVO vo) {
 		// TODO Auto-generated method stub
@@ -39,6 +39,12 @@ public class TodoServiceImpl implements TodoService{
 	public void deleteTodo(TodoVO vo) {
 		// TODO Auto-generated method stub
 		dao.deleteClient(vo);
+	}
+	// 추가 기능
+	@Override
+	public void updateAchieve(TodoVO vo) {
+		// TODO Auto-generated method stub
+		dao.achieveTodo(vo);
 	}
 
 }
