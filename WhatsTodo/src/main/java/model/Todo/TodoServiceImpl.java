@@ -16,11 +16,11 @@ public class TodoServiceImpl implements TodoService{
 		// TODO Auto-generated method stub
 		dao.insertClient(vo);
 	}
-
+	
 	@Override
-	public List<TodoVO> getMyTodoList(TodoVO vo) {
+	public List<TodoVO> getAllTodoList() {
 		// TODO Auto-generated method stub
-		return dao.selectAll(vo);
+		return dao.selectAllTodo();
 	}
 
 	@Override
@@ -40,7 +40,15 @@ public class TodoServiceImpl implements TodoService{
 		// TODO Auto-generated method stub
 		dao.deleteClient(vo);
 	}
+	
+	
 	// 추가 기능
+	@Override
+	public List<TodoVO> getMyTodoList(TodoVO vo) {
+		// TODO Auto-generated method stub
+		return dao.selectMyTodo(vo);
+	}
+	
 	@Override
 	public void updateAchieve(TodoVO vo) {
 		// TODO Auto-generated method stub

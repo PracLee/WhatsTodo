@@ -34,7 +34,7 @@
 </head>
 <body>
 	<div class="container">
-		<mytag:topbar />
+		<mytag:topbar popTodo="${popTodo}"/>
 		<form method="post" action="insertTodo.do">
 			<section class="content bgcolor-1">
 				<span class="input input--nariko"> <input

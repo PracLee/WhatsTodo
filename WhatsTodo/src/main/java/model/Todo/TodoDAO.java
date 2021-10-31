@@ -15,12 +15,14 @@ public class TodoDAO {
 	// CRUD
 	final String insertSQL = "insert into Todo (todoNum, todo, cid, deadLine) values ((SELECT NVL(MAX(todoNum),0) + 1 FROM Todo),?,?,?)";
 	final String selectOneSQL = "select * from Todo where todoNum = ?";
-	final String selectAllSQL = "select * from Todo where cid = ? and achieveTodo = 0 order by deadline";
+	final String selectAllSQL = "select * from Todo";
 	final String updateSQL = "update Todo set todo = ? where todoNum = ?";
 	final String deleteSQL = "delete Todo where todoNum = ?";
 	
 	// 추가기능
 	final String updateAchieve = "update Todo set achieveTodo = 1 where todoNum = ?";
+	final String selectMyTodoSQL = "select * from Todo where cid = ? and achieveTodo = 0 order by deadline";
+	
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -33,10 +35,10 @@ public class TodoDAO {
 	public TodoVO selectOne(TodoVO vo) {
 		return jdbcTemplate.queryForObject(selectOneSQL, new TodoRowMapper());
 	}
-
-	public List<TodoVO> selectAll(TodoVO vo){
-		return jdbcTemplate.query(selectAllSQL, new TodoRowMapper(), vo.getCid());
+	public List<TodoVO> selectAllTodo(){
+		return jdbcTemplate.query(selectAllSQL, new TodoRowMapper());
 	}
+
 	public void updateClient(TodoVO vo) {
 		Object[] args = {vo.getTodo(), vo.getTodoNum()};
 		jdbcTemplate.update(updateSQL, args);
@@ -48,6 +50,10 @@ public class TodoDAO {
 	// 추가 기능
 	public void achieveTodo(TodoVO vo) {
 		jdbcTemplate.update(updateAchieve, vo.getTodoNum());
+	}
+	
+	public List<TodoVO> selectMyTodo(TodoVO vo){
+		return jdbcTemplate.query(selectMyTodoSQL, new TodoRowMapper(), vo.getCid());
 	}
 }
 
