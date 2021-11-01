@@ -33,28 +33,8 @@
 		<![endif]-->
 </head>
 <body>
-	<mytag:topbar popTodo="${popTodo}" />
+	<mytag:completeTopbar popTodo="${popTodo}" />
 	<div class="container">
-		<form method="post" action="insertTodo.do">
-			<section class="content bgcolor-1">
-				<span class="input input--nariko"> <input
-					class="input__field input__field--nariko" type="date" id="input-21"
-					min="${today}" name="deadLine" required="required" /> <label
-					class="input__label input__label--nariko" for="input-21"> <span
-						class="input__label-content input__label-content--nariko">DeadLine</span>
-				</label>
-				</span> <span class="devideword"><spring:message
-						code="message.main.to" /></span> <span class="input input--nariko">
-					<input class="input__field input__field--nariko" type="text"
-					id="input-22" required="required" name="todo" /> <label
-					class="input__label input__label--nariko" for="input-22"> <span
-						class="input__label-content input__label-content--nariko">Todo</span>
-				</label>
-				</span> <input class="devideword" type="submit"
-					value="<spring:message code="message.main.doit" />">
-			</section>
-			<input type="hidden" name="cid" value="${ClientData.id}">
-		</form>
 
 		<!-- 목록 출력 -->
 		<div class="col-sm-12">
@@ -62,30 +42,13 @@
 				<tr>
 					<th><spring:message code="message.main.deadLine" /></th>
 					<th><spring:message code="message.main.todo" /></th>
-					<th><spring:message code="message.main.update" /></th>
-					<th><spring:message code="message.main.delete" /></th>
-					<th><spring:message code="message.main.achieve" /></th>
+					<th><spring:message code="message.main.compelete" /></th>
 				</tr>
 				<c:forEach var="tl" items="${TodoDatas}">
-					<tr id="todoSet_${tl.todoNum}">
+					<tr id="todoSet_${tl.todoNum}" class="completeTodo">
 						<td>${tl.deadLine}</td>
-						<td><span id="text_${tl.todoNum}">${tl.todo}</span><input
-							type="text" id="input_${tl.todoNum}" class="noShow"> <a
-							href="javascript:void(0);" onclick="editCancle(${tl.todoNum})"
-							id="cancleButton_${tl.todoNum}" class="noShow">❌</a></td>
-						<td>
-							<!-- show input button --> <a href="javascript:void(0);"
-							onclick="showInput(${tl.todoNum})"
-							id="showInputButton_${tl.todoNum}">❗</a> <!-- updateDB button -->
-							<a href="javascript:void(0);" onclick="todoEditDB(${tl.todoNum})"
-							id="updateButton_${tl.todoNum}" class="noShow">❗</a>
-						</td>
-						<td><a href="javascript:void(0);"
-							onclick="deleteTodoDB(${tl.todoNum})"
-							id="deleteTodoButton_${tl.todoNum}">❌</a></td>
-						<td><a href="javascript:void(0);"
-							onclick="todoAchieve(${tl.todoNum})"
-							id="achieveTodoButton_${tl.todoNum}">⭕</a></td>
+						<td><span id="text_${tl.todoNum}">${tl.todo}</span></td>
+						<td>${tl.toDate}</td>
 					</tr>
 				</c:forEach>
 			</table>

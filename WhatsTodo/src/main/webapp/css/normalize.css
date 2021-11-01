@@ -7,11 +7,27 @@ audio, canvas, video {
 	display: inline-block;
 }
 
-audio:not ([controls] ){
-	display: none;
-	height: 0;
-}
+audio
+:not
+ 
+(
+[
+controls
+]
+ 
+){
+display
+:
+ 
+none
+;
 
+	
+height
+:
+ 
+0;
+}
 [hidden] {
 	display: none;
 }
@@ -98,10 +114,21 @@ img {
 	border: 0;
 }
 
-svg:not (:root ){
-	overflow: hidden;
-}
+svg
+:not
+ 
+(
+:root
+ 
+){
+overflow
+:
+ 
+hidden
+;
 
+
+}
 figure {
 	margin: 0;
 }
@@ -175,5 +202,10 @@ table {
 
 /* custom css */
 .noShow {
-	display : none;
+	display: none;
+}
+
+.completeTodo {
+	color : #D4D1CE;
+	background-color : #F0EFEE;
 }

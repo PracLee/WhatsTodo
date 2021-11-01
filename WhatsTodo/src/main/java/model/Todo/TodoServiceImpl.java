@@ -14,7 +14,7 @@ public class TodoServiceImpl implements TodoService{
 	@Override
 	public void insertTodo(TodoVO vo) {
 		// TODO Auto-generated method stub
-		dao.insertClient(vo);
+		dao.insertTodo(vo);
 	}
 	
 	@Override
@@ -53,6 +53,12 @@ public class TodoServiceImpl implements TodoService{
 	public void updateAchieve(TodoVO vo) {
 		// TODO Auto-generated method stub
 		dao.achieveTodo(vo);
+	}
+
+	@Override
+	public List<TodoVO> showMyPrevious(TodoVO vo) {
+		// TODO Auto-generated method stub
+		return dao.showPreviousMyTodo(vo);
 	}
 
 }

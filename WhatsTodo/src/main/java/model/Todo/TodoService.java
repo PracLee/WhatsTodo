@@ -13,4 +13,5 @@ public interface TodoService {
 	// Ãß°¡
 	public void updateAchieve(TodoVO vo);
 	public List<TodoVO> getMyTodoList(TodoVO vo);
+	public List<TodoVO> showMyPrevious(TodoVO vo);
 }

@@ -25,10 +25,13 @@
       <property name="dataSource" ref="dataSource"/>
    </bean>
    
+   
    <!-- exception -->
-    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+   <!--  <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
       <property name="defaultErrorView" value="index.jsp" />
-   </bean>
+   </bean> -->
+   
+   <!-- 국제화 설정 -->
    <mvc:interceptors>
       <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
          <property name="paramName" value="lang" />

@@ -12,6 +12,7 @@ public class TodoVO {
 	private boolean achieveTodo;
 	private Date toDate;
 	private String deadLine;
+	private int todoCnt;
 	
 	// get set
 	public int getTodoNum() {
@@ -50,12 +51,19 @@ public class TodoVO {
 	public void setDeadLine(String deadLine) {
 		this.deadLine = deadLine;
 	}
+	public int getTodoCnt() {
+		return todoCnt;
+	}
+	public void setTodoCnt(int todoCnt) {
+		this.todoCnt = todoCnt;
+	}
 	
 	//toString
 	@Override
 	public String toString() {
 		return "TodoVO [todoNum=" + todoNum + ", todo=" + todo + ", cid=" + cid + ", achieveTodo=" + achieveTodo
-				+ ", toDate=" + toDate + ", deadLine=" + deadLine + "]";
+				+ ", toDate=" + toDate + ", deadLine=" + deadLine + ", todoCnt=" + todoCnt + "]";
 	}
+	
 	
 }
