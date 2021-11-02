@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapping.todo-mapping">
+<mapper namespace="tdao">
 <!-- 비즈니스 메소드 -->
 	<insert id="insertTodo">
 		INSERT INTO TODO (TODONUM, TODO, CID, DEADLINE) VALUES ((SELECT NVL(MAX(TODONUM),0) + 1 FROM TODO),#{todo},#{cid},#{deadLine})
@@ -28,10 +28,10 @@
 	<select id="previousMyTodo" resultType="todoVo">
 		SELECT * FROM TODO WHERE CID = #{cid} AND ACHIEVETODO = 1 ORDER BY DEADLINE
 	</select>
-	<update id="cntUpSQL">
+	<update id="cntUp">
 		UPDATE TODO SET TODOCNT = (SELECT MAX(TODOCNT) FROM TODO WHERE TODO = #{todo}) + 1 WHERE TODO = #{todo}
 	</update>
-	<update id="cntDownSQL">
+	<update id="cntDown">
 		UPDATE TODO SET TODOCNT = (SELECT MAX(TODOCNT) FROM TODO WHERE TODO = #{todo}) - 1 WHERE TODO = #{todo}
 	</update>
 </mapper>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapping.client-mapping">
+<mapper namespace="cdao">
 <!-- 비즈니스 메소드 -->
 	<insert id="insertClient">
 		INSERT INTO CLIENT (ID, PW, NAME) VALUES(#{id},#{pw},#{name})

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class ClientServiceImpl implements ClientService{
 	
 	@Autowired
-	ClientDAO dao;
+	ClientBatisDAO dao;
 	// CRUD
 	@Override
 	public void insertClient(ClientVO vo) {

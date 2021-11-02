@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class TodoServiceImpl implements TodoService{
 	
 	@Autowired
-	TodoDAO dao;
+	TodoBatisDAO dao;
 	// 비즈니스 메소드
 	@Override
 	public void insertTodo(TodoVO vo) {
