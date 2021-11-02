@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+#smail{
+	color : #474B50;
+}
+#confirm{
+	margin-top: 20px;
+	margin-bottom : 20px;
+	width : 100%;
+}
+#noneCheck {
+	margin-left: 30px;
+}
+#checkBox {
+	font-size: 15px;
+	color: dimgrey;
+}
+#Header {
+	color: #D25A53;
+	font-weight: bold;
+	margin-bottom: 60px;
+}
+#consentHeader {
+	font-weight: bold;
+	color: dimgrey;
+}
+#signUpBtn {
+	margin-top: 80px;
+	margin-bottom: 80px;
+}
+#consent {
+	margin-top: 100px;
+}
+#pwHeader {
+	width: 500px;
+	float : left;
+}
+
+#consentError {
+	display: block;
+	color: red;
+	text-align: right;
+	font-size: 11px;
+	font-weight: normal;
+	margin-bottom: -10px;
+	margin-right: 15px;
+}
+#idError, #pwError, #pwCheckError, #nameError {
+	width: 0px auto;
+	display: inline-block;
+	color: red;
+	font-size: 11px;
+	font-weight: normal;
+	margin-left: 10px;
+}
+#consentBox {
+	margin: 0px auto;
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 300px;
+	border: solid 1px #D25A53;
+	border-top-color: #D25A53;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-right-color: #D25A53;
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-bottom-color: #D25A53;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-left-color: #D25A53;
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-width: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	padding-top: 10px;
+	padding-left: 14px;
+	padding-right: 14px;
+	box-sizing: border-box;
+	background-color: white;
+	overflow-y: scroll;
+	text-align: justify;
+	font-size: 15px;
+}
+#ftsw {
+	font-size: 20px;
+	font-weight: bold;
+}
+.signupt {
+	margin-bottom: 0px;
+	text-align: left;
+	display: block;
+	margin-left: 5px;
+	font-size: 15px;
+}
+@font-face {
+	font-family: 'NanumSquareRound';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+.mlogo {
+	width: 220px;
+}
+.fset {
+	display: inline-block;
+	width: 360px;
+}
+.checkID {
+	height: 45px;
+	float: right;
+}
+#conteiner{
+	text-align: center;
+}

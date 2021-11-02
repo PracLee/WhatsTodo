@@ -10,7 +10,7 @@ public class ClientServiceImpl implements ClientService{
 	
 	@Autowired
 	ClientDAO dao;
-
+	// CRUD
 	@Override
 	public void insertClient(ClientVO vo) {
 		// TODO Auto-generated method stub
@@ -41,4 +41,11 @@ public class ClientServiceImpl implements ClientService{
 		dao.deleteClient(vo);
 	}
 
+	// 추가기능
+	@Override
+	public ClientVO idCheck(ClientVO vo) {
+		// TODO Auto-generated method stub
+		return dao.findIDCheck(vo);
+	}
+	
 }

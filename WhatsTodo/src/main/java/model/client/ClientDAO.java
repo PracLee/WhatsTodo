@@ -20,6 +20,9 @@ public class ClientDAO {
 	final String updateSQL = "update Client set pw = ?, name = ? where id = ?";
 	final String deleteSQL = "delete Client where id = ?";
 
+	//	추가기능
+	final String idcheckSQL = "select * from Client where id = ?";
+	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
@@ -42,6 +45,12 @@ public class ClientDAO {
 	}
 	public void deleteClient(ClientVO vo) {
 		jdbcTemplate.update(deleteSQL, vo.getId());
+	}
+	public ClientVO findIDCheck(ClientVO vo) {
+		Object[] args = {vo.getId()};
+		System.out.println("model VO : "+vo);
+		ClientVO data= jdbcTemplate.queryForObject(idcheckSQL, args, new ClientRowMapper());
+		return data;
 	}
 }
 

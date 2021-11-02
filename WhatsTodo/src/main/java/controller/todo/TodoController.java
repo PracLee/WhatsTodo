@@ -84,7 +84,6 @@ public class TodoController {
 
 	@RequestMapping("/deleteTodo.do")
 	public void deleteTodo(TodoVO vo, HttpServletResponse response) {
-		System.out.println("여긴 오니?");
 		service.deleteTodo(vo);
 		try {
 			PrintWriter out =response.getWriter();
@@ -98,7 +97,6 @@ public class TodoController {
 
 	@RequestMapping("/updateTodo.do")
 	public void updateTodo(TodoVO vo, HttpServletResponse response) {
-		System.out.println("updateTodoVO = " + vo);
 		service.updateTodo(vo);
 		String data = vo.getTodo();
 		try {

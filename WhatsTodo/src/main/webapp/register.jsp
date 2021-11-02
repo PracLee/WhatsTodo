@@ -12,7 +12,13 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+<style type="text/css">
+@import url("css/signUp.css");
+</style>
 <title>SB Admin 2 - Register</title>
+
+<!-- 유효성검사 -->
+<script src="js/SignUp2.js"></script>
 
 <!-- Custom fonts for this template-->
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
@@ -23,6 +29,7 @@
 
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
+<link href="css/nomalize.css" rel="stylesheet">
 
 </head>
 
@@ -41,30 +48,42 @@
 								<h1 class="h4 text-gray-900 mb-4">JoinUs What's Todo</h1>
 							</div>
 							<form class="user" method="post" action="insertClient.do">
+								<div class="form-group">
+									<input type="email"
+										class="form-control form-control-user check" id="inputEmail"
+										placeholder="Email Address" name="id" required="required">
+									<a type="button" href="javascript:void(0);" onclick="idCheck()"
+										class="btn btn-user btn-block" id="checkID">
+										ID Check
+										</a>
+								</div>
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="text" class="form-control form-control-user"
-											id="exampleFirstName" placeholder="Name" name="name">
+										<input type="text"
+											class="form-control form-control-user check" id="inputName"
+											placeholder="Name" name="name" required="required">
 									</div>
 								</div>
-								<div class="form-group">
-									<input type="email" class="form-control form-control-user"
-										id="exampleInputEmail" placeholder="Email Address" name="id">
-								</div>
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
-										<input type="password" class="form-control form-control-user"
-											id="exampleInputPassword" placeholder="Password" name="pw">
+										<input type="password"
+											class="form-control form-control-user check"
+											id="inputPassword" placeholder="Password" name="pw"
+											required="required">
 									</div>
 									<div class="col-sm-6">
-										<input type="password" class="form-control form-control-user"
-											id="exampleRepeatPassword" placeholder="Repeat Password">
+										<input type="password"
+											class="form-control form-control-user check"
+											id="repeatPassword" placeholder="Repeat Password"
+											required="required">
 									</div>
 								</div>
-								<input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account">
+								<input type="submit" class="btn btn-primary btn-user btn-block"
+									disabled="disabled" value="Register Account">
 								<hr>
-								<a href="googleRegister.do" class="btn btn-google btn-user btn-block">
-									<i class="fab fa-google fa-fw"></i> Register with Google
+								<a href="googleRegister.do"
+									class="btn btn-google btn-user btn-block"> <i
+									class="fab fa-google fa-fw"></i> Register with Google
 								</a>
 							</form>
 							<hr>

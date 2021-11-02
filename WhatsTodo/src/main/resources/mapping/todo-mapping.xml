@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapping.todo-mapping">
+<!-- 비즈니스 메소드 -->
+	<insert id="insertTodo">
+		INSERT INTO TODO (TODONUM, TODO, CID, DEADLINE) VALUES ((SELECT NVL(MAX(TODONUM),0) + 1 FROM TODO),#{todo},#{cid},#{deadLine})
+	</insert>
+	<select id="selectTodo" resultType="todoVo">
+		SELECT * FROM TODO WHERE TODONUM = #{todoNum}
+	</select>
+	<select id="selectAllTodo" resultType="todoVo">
+		SELECT * FROM TODO ORDER BY TODOCNT DESC
+	</select>
+	<update id="updateTodo">
+		UPDATE TODO SET TODO = #{todo} WHERE TODONUM = #{todoNum}
+	</update>
+	<delete id="deleteTodo">
+		DELETE TODO WHERE TODONUM = #{todoNum}
+	</delete>
+
+	<!-- 추가기능 -->
+	<update id="updateAcheive">
+		UPDATE TODO SET ACHIEVETODO = 1, TODATE = SYSDATE WHERE TODONUM = #{todoNum}
+	</update>
+	<select id="selectMyTodo" resultType="todoVo">
+		SELECT * FROM TODO WHERE CID = #{cid} AND ACHIEVETODO = 0 ORDER BY DEADLINE
+	</select>
+	<select id="previousMyTodo" resultType="todoVo">
+		SELECT * FROM TODO WHERE CID = #{cid} AND ACHIEVETODO = 1 ORDER BY DEADLINE
+	</select>
+	<update id="cntUpSQL">
+		UPDATE TODO SET TODOCNT = (SELECT MAX(TODOCNT) FROM TODO WHERE TODO = #{todo}) + 1 WHERE TODO = #{todo}
+	</update>
+	<update id="cntDownSQL">
+		UPDATE TODO SET TODOCNT = (SELECT MAX(TODOCNT) FROM TODO WHERE TODO = #{todo}) - 1 WHERE TODO = #{todo}
+	</update>
+</mapper>

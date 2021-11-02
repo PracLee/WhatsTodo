@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 별칭(별명) 설정 -->
+	<typeAliases>
+		<typeAlias alias="clientVo" type="model.client.ClientVO" />
+		<typeAlias alias="todoVo" type="model.Todo.TodoVO" />
+	</typeAliases>
+	<!-- mappings패키지안의 메서드(==설정파일)와 연결 -->
+	<mappers>
+		<mapper resource="mappings/client-mapping.xml" />
+		<mapper resource="mappings/todo-mapping.xml"/>
+	</mappers>
+</configuration>
