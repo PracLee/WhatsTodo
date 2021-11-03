@@ -56,7 +56,6 @@ public class ClientDAO {
 
 	public ClientVO findIDCheck(ClientVO vo) {
 		Object[] args = {vo.getId()};
-		System.out.println("model VO : "+vo);
 		ClientVO data = null;
 		try {
 			data= jdbcTemplate.queryForObject(idcheckSQL, args, new ClientRowMapper());

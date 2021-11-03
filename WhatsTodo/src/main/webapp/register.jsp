@@ -79,7 +79,7 @@
 									</div>
 								</div>
 								<input type="submit" class="btn btn-primary btn-user btn-block"
-									disabled="disabled" value="Register Account">
+									disabled="disabled" value="Register Account" id="submitBtn">
 								<hr>
 								<a href="googleRegister.do"
 									class="btn btn-google btn-user btn-block"> <i

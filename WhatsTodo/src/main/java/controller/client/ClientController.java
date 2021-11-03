@@ -80,7 +80,6 @@ public class ClientController {
 			}
 			else {
 				out.print("false");
-				return;
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
