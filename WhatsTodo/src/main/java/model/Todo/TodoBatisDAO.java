@@ -1,15 +1,8 @@
 package model.Todo;
 
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
-
-@Repository
+//@Repository
 public class TodoBatisDAO {
+	/*
 	@Autowired
 	@Resource(name="sessionFactory")
 	private SqlSessionTemplate mybatis;
@@ -46,5 +39,5 @@ public class TodoBatisDAO {
 	
 	public List<TodoVO> showPreviousMyTodo(TodoVO vo){
 		return mybatis.selectList("tdao.previousMyTodo", vo);
-	}
+	}*/
 }
