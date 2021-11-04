@@ -29,6 +29,7 @@ public class TodoController {
 
 	@RequestMapping("/insertTodo.do")
 	public String insertTodo(TodoVO vo) {
+		System.out.println("insertTodo vo : "+ vo);
 		service.insertTodo(vo);
 		return "redirect:main.do";
 	}
@@ -57,7 +58,7 @@ public class TodoController {
 		return "main.jsp";
 	}
 
-	@RequestMapping("showComplete.do")
+	@RequestMapping("/showComplete.do")
 	public String showMyPreviousTodos(HttpSession session, TodoVO vo, Model model) {
 		// getPopTodo
 		model.addAttribute("popTodo", getPopTodo());

@@ -35,3 +35,4 @@ select * from Todo;
 -- D
 drop table Client;
 drop table todo;
+delete from CLIENT where pw='googleUser';

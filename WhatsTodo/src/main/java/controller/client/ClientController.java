@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.context.request.WebRequest;
 
 import model.client.ClientService;
 import model.client.ClientVO;
@@ -73,12 +74,36 @@ public class ClientController {
 	public void idCheck(ClientVO vo, HttpServletResponse response) {
 		try {
 			PrintWriter out = response.getWriter();
-			System.out.println("controllerVO : "+vo);
 			ClientVO data = service.idCheck(vo);
 			if(data != null) {
 				out.print("true");
 			}
 			else {
+				out.print("false");
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return;
+	}
+	
+	@RequestMapping("/googleRegister.do")
+	public void googleRegister(ClientVO vo, HttpServletResponse response, HttpServletRequest request) {
+		vo.setPw("googleUser");
+		try {
+			PrintWriter out = response.getWriter();
+			System.out.println("Google Register Controller : "+vo);
+			ClientVO data = service.idCheck(vo);
+			if(data != null) {
+				System.out.println("이미 존재하는 ID : 로그인 페이지로 돌아가기");
+				out.print("ture");
+			}
+			else {
+				System.out.println("존재하지 않는 ID : 회원가입 후 로그인");
+				service.insertClient(vo);
+				HttpSession session = request.getSession();
+				session.setAttribute("ClientData", vo);
 				out.print("false");
 			}
 		} catch (IOException e) {

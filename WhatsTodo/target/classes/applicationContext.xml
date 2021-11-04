@@ -34,21 +34,16 @@
 	<!-- <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> 
 		<property name="defaultErrorView" value="index.jsp" /> </bean> -->
 
-	<!-- 국제화 설정 -->
+	<!-- 국제화 설정 --><!-- 
 	<mvc:interceptors>
 		<bean
 			class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
-			<property name="paramName" value="lang" />
+			<property name="paramName" value="ko_KR" />
 		</bean>
-	</mvc:interceptors>
+	</mvc:interceptors> -->
 
-	<!-- MyBatis SessionFactory 설정 --><!-- 
-	<bean id="sessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:sql-map-config.xml" />
-	</bean>
-	<bean class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sessionFactory" />
-	</bean> -->
+	<!-- MyBatis SessionFactory 설정 --><!-- <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"> 
+		<property name="dataSource" ref="dataSource" /> <property name="configLocation" 
+		value="classpath:sql-map-config.xml" /> </bean> <bean class="org.mybatis.spring.SqlSessionTemplate"> 
+		<constructor-arg ref="sessionFactory" /> </bean> -->
 </beans>
