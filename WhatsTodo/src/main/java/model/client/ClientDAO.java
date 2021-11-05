@@ -34,7 +34,13 @@ public class ClientDAO {
 
 	public ClientVO selectOne(ClientVO vo) {
 		Object[] args = {vo.getId(), vo.getPw()};
-		return jdbcTemplate.queryForObject(selectOneSQL, args, new ClientRowMapper());
+		ClientVO data = null;
+		try {
+			data = jdbcTemplate.queryForObject(selectOneSQL, args, new ClientRowMapper());
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return data;
 	}
 
 	public List<ClientVO> selectAll(){

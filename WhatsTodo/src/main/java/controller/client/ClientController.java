@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.WebRequest;
@@ -29,13 +30,23 @@ public class ClientController {
 	}
 
 	@RequestMapping("/login.do")
-	public String login(ClientVO vo, HttpServletRequest request) {
+	public String login(ClientVO vo, HttpServletRequest request, HttpServletResponse response) {
 		if(vo.getId().equals("") || vo.getPw()==null) {
 			return "index.jsp";
 		}
 		ClientVO data = service.getOneClient(vo);
 		if(data==null) {
-			return "index.jsp";
+			try {
+				PrintWriter out = response.getWriter();
+				out.println("<script>");
+				out.println("alert('Check Your ID, PassWord!');");
+				out.println("history.go(-1);");
+				out.println("</script>");
+				return null;
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		HttpSession session = request.getSession();
 		session.setAttribute("ClientData", data);
@@ -87,7 +98,7 @@ public class ClientController {
 		}
 		return;
 	}
-	
+
 	@RequestMapping("/googleRegister.do")
 	public void googleRegister(ClientVO vo, HttpServletResponse response, HttpServletRequest request) {
 		vo.setPw("googleUser");
@@ -111,5 +122,29 @@ public class ClientController {
 			e.printStackTrace();
 		}
 		return;
+	}
+
+	@RequestMapping("/googleLogin.do")
+	public void googleLogin(ClientVO vo, HttpServletResponse response, HttpServletRequest request) {
+		System.out.println("구글로그인!");
+		vo.setPw("googleUser");
+		ClientVO data = service.getOneClient(vo);
+		try {
+			PrintWriter out = response.getWriter();
+			if(data==null) {
+				// 로그인 실패
+				out.print("false");
+				return;
+			}
+			// 로그인 성공
+			HttpSession session = request.getSession();
+			session.setAttribute("ClientData", data);
+			out.print("true");
+			return;			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 }

@@ -32,7 +32,7 @@ url("css/signUp.css")
 <link href="css/nomalize.css" rel="stylesheet">
 <!-- google API -->
 <script src="https://apis.google.com/js/api:client.js"></script>
-  <script>
+<script>
   var googleUser = {};
   var startApp = function() {
     gapi.load('auth2', function(){
@@ -76,23 +76,13 @@ url("css/signUp.css")
         });
   }
   </script>
-  <style type="text/css">
-    
-    span.icon {
-      background: url('/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
-      display: inline-block;
-      vertical-align: middle;
-      width: 42px;
-    }
-    span.buttonText {
-      display: inline-block;
-      vertical-align: middle;
-      padding-left: 42px;
-      padding-right: 42px;
-      font-size: 14px;
-      font-weight: bold;
-    }
-  </style>
+<style type="text/css">
+span.buttonText {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: .8rem;
+}
+</style>
 </head>
 
 <body class="bg-gradient-primary">
@@ -140,8 +130,11 @@ url("css/signUp.css")
 									disabled="disabled" value="Register Account" id="submitBtn">
 								<hr>
 								<div id="gSignInWrapper">
-									<div id="customBtn" class="customGPlusSignIn btn btn-google btn-user btn-block">
-										<span class="buttonText">Google Register</span>
+									<div id="customBtn"
+										class="customGPlusSignIn btn btn-google btn-user btn-block">
+										<i class="fab fa-google fa-fw" ></i>
+										<span class="buttonText">Google
+											Register</span>
 									</div>
 								</div>
 							</form>
@@ -168,7 +161,7 @@ url("css/signUp.css")
 	<!-- Custom scripts for all pages-->
 	<script src="js/sb-admin-2.min.js"></script>
 
-  <script>startApp();</script>
+	<script>startApp();</script>
 </body>
 
 </html>

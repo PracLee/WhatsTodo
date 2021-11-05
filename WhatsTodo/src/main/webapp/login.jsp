@@ -27,6 +27,61 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+
+<!-- google API -->
+<script src="https://apis.google.com/js/api:client.js"></script>
+<script>
+	var googleUser = {};
+	var startApp = function() {
+		gapi
+				.load(
+						'auth2',
+						function() {
+							// Retrieve the singleton for the GoogleAuth library and set up the client.
+							auth2 = gapi.auth2
+									.init({
+										client_id : '1510049929-7vep3930s4noba6qc01vu4ov2ob6sarl.apps.googleusercontent.com',
+										cookiepolicy : 'single_host_origin',
+									// Request scopes in addition to 'profile' and 'email'
+									//scope: 'additional_scope'
+									});
+							attachSignin(document.getElementById('customBtn'));
+						});
+	};
+
+	function attachSignin(element) {
+		console.log(element.id);
+		auth2.attachClickHandler(element, {}, function(googleUser) {
+			console.log('googleUser!');
+			var profile = googleUser.getBasicProfile();
+			var id = profile.getId();
+			var pram = "id=" + id;
+			$.ajax({
+				type : "post",
+				url : "googleLogin.do",
+				data : pram,
+				datatype : "json",
+				success:function(args){
+	    			if(args){
+	    				document.location.href = "main.do";
+	    			} else{
+	    				alert('There is no registered Google ID. After registering your Google ID, you will be logged in.');
+	    				document.location.href = "googleRegister.do";				
+	    			} 
+	    		}
+			});
+		}, function(error) {
+			alert(JSON.stringify(error, undefined, 2));
+		});
+	}
+</script>
+<style type="text/css">
+span.buttonText {
+	display: inline-block;
+	vertical-align: middle;
+	font-size: .8rem;
+}
+</style>
 </head>
 
 <body class="bg-gradient-primary">
@@ -69,20 +124,19 @@
 										<input class="btn btn-primary btn-user btn-block"
 											type="submit" value="Login">
 										<hr>
-										<a href="javascript:void(0)"
-											class="btn btn-google btn-user btn-block"> <i
-											class="fab fa-google fa-fw" data-onsuccess="onSignIn"></i> Login with Google
-										</a>
+										<div id="gSignInWrapper">
+											<div id="customBtn"
+												class="customGPlusSignIn btn btn-google btn-user btn-block">
+												<i class="fab fa-google fa-fw"></i> <span class="buttonText">Google
+													Login</span>
+											</div>
+										</div>
 										<!-- FB login button  https 인증서 설치 후 사용가능
 										<div class="fb-login-button" data-width="" data-size="large"
 											data-button-type="login_with" data-layout="rounded"
 											data-auto-logout-link="false" data-use-continue-as="true"></div> -->
 									</form>
 									<hr>
-									<div class="text-center">
-										<a class="small" href="forgot-password.jsp">Forgot
-											Password?</a>
-									</div>
 									<div class="text-center">
 										<a class="small" href="register.jsp">Create an Account!</a>
 									</div>
@@ -114,7 +168,8 @@
 		nonce="ZzTJHbtm"></script>
 		 -->
 	<!-- 처음 실행하는 함수 -->
-	
+
+	<script>startApp();</script>
 </body>
 
 </html>
