@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="mytag" tagdir="/WEB-INF/tags"%>
 <!DOCTYPE html>
@@ -40,9 +39,9 @@
 		<div class="col-sm-12">
 			<table class="table table-bordered dataTable">
 				<tr>
-					<th><spring:message code="message.main.deadLine" /></th>
-					<th><spring:message code="message.main.todo" /></th>
-					<th><spring:message code="message.main.compelete" /></th>
+					<th>Dead Line</th>
+					<th>Todo</th>
+					<th>Compelete Date</th>
 				</tr>
 				<c:forEach var="tl" items="${TodoDatas}">
 					<tr id="todoSet_${tl.todoNum}" class="completeTodo">
