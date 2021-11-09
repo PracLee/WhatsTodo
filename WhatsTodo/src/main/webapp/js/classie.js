@@ -107,7 +107,7 @@ function todoEditDB(index){
 		data:params,
 		dataType:"json",
 		success:function(args){
-			// console.log("성공했으면 소리질러!!");
+			console.log("성공했으면 소리질러!!");
 			$('#text_'+index).removeClass();
 			$('#showInputButton_'+index).removeClass();
 			$('#cancleButton_'+index).addClass('noShow');
