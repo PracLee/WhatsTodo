@@ -137,6 +137,8 @@ public class TodoController {
 			int firstIndex = firstTodo.getTodoCnt();	// 0번의 Cnt가 FirstTodo의 size
 			int secondIndex;
 			popularTodo.add(0, firstTodo);
+			System.out.println("allTodo.size() = "+allTodo.size());
+			System.out.println("firstIndex = "+firstIndex);
 			if(allTodo.size()>firstIndex) {
 				secondTodo = allTodo.get(firstIndex);
 				secondIndex = secondTodo.getTodoCnt();
@@ -149,6 +151,7 @@ public class TodoController {
 				}
 			}
 		}
+		System.out.println("popularTodo = " + popularTodo);
 		return popularTodo;
 	}
 }
